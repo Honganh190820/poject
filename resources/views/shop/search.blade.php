@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 @extends('shop.layouts.main')
 @section('content')
     <div style="margin-top: 20px;" class="container product_section_container">

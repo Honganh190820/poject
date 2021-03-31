@@ -35,8 +35,8 @@
                             <li><a href="{{route('shop.products_by_category', ['slug' => $item->slug])}}">{{$item->name}}</a></li>
                                 @endif
                             @endforeach
-                            <li><a href="/bai-viet">Bài viết</a></li>
-                            <li><a href="/lien-he">Liên Hệ</a></li>
+                            <li><a href="/bai-viet#article">Bài viết</a></li>
+                            <li><a href="/lien-he#contact">Liên Hệ</a></li>
 
                         </ul>
 

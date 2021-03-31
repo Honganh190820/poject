@@ -47,6 +47,27 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Phone</label>
+                                <input value="{{ $user->phone }}" type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại">
+                                @if ($errors->has('phone'))
+                                    <p style="color: red" class="help is-danger">{{ $errors->first('phone') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Địa chỉ</label>
+                                <input value="{{ $user->address }}" type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ">
+                                @if ($errors->has('address'))
+                                    <p style="color: red" class="help is-danger">{{ $errors->first('address') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">CMND</label>
+                                <input value="{{ $user->CMND }}" type="text" class="form-control" id="CMND" name="CMND" placeholder="Nhập số chứng minh nhân dân">
+                                @if ($errors->has('CMND'))
+                                    <p style="color: red" class="help is-danger">{{ $errors->first('CMND') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1" style="color: #9c3328">** Mật khẩu mới</label>
                                 <input type="password" class="form-control" id="new_password" name="new_password" placeholder="Nhập mật khẩu mới">
                                 @if ($errors->has('password'))
@@ -57,7 +78,7 @@
                                 <label for="exampleInputFile" style="color: #9c3328">** Thay đổi ảnh đại diện</label>
                                 <input type="file" id="new_avatar" name="image">
                                 <br>
-                                <img src="{{ asset($user->avatar) }}" width="250">
+                                <img src="{{ asset($user->image) }}" width="250">
                                 @if ($errors->has('image'))
                                     <p style="color: red" class="help is-danger">{{ $errors->first('image') }}</p>
                                 @endif

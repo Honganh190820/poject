@@ -34,11 +34,14 @@
                     <form action="{{ route('admin.order.update', ['id' => $order->id]) }}" method="post">
                         @csrf
                         @method('PUT')
-                        <div class="box-header with-border">
+                        <div class="col-md-10 box-header with-border">
                             <button type="submit" class="btn btn-info btn-flat">
                                 <i class="fa fa-edit"></i>
                                 Cập nhật
                             </button>
+                        </div>
+                        <div class="col-md-1" style="margin-top: 10px;">
+                            <a class="btn btn-success " href="{{route('admin.order.index')}}"><span class="glyphicon glyphicon-repeat"></span> Quay lại danh sách</a>
                         </div>
                         <div class="box-body">
                             <table class="table table-bordered">
@@ -85,12 +88,16 @@
                                     </td>
                                     <td><label>Trạng thái ĐH</label></td>
                                     <td style="color: red">
-                                        <select class="form-control " name="order_status_id" style="max-width: 150px;display: inline-block;">
-                                            <option value="0">-- chọn --</option>
-                                            @foreach($order_status as $status)
-                                                <option {{ ($order->order_status_id == $status->id ? 'selected':'') }} value="{{ $status->id }}">{{ $status->name }}</option>
-                                            @endforeach
-                                        </select>
+                                        @if($order->order_status_id == 3)
+                                            <span> Hoàn thành </span>
+                                        @else
+                                            <select class="form-control " name="order_status_id" style="max-width: 150px;display: inline-block;">
+                                                <option value="0">-- chọn --</option>
+                                                @foreach($order_status as $status)
+                                                    <option {{ ($order->order_status_id == $status->id ? 'selected':'') }} value="{{ $status->id }}">{{ $status->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        @endif
                                     </td>
                                 </tr>
                                 <tr>

@@ -40,6 +40,7 @@ Route::group(['prefix' => 'admin' , 'middleware' => 'checkLogin', 'as' => 'admin
     Route::resource('setting', 'SettingController'); // bai viet
     Route::resource('contact', 'ContactController'); // bai viet
     Route::resource('user', 'UserController'); // bai viet
+    Route::resource('coupon', 'CouponController'); // bai viet
     Route::post('order/remove-to-cart', 'OrderController@removeToCart')->name('order.remove'); // Ql Đơn hàng
     Route::resource('order', 'OrderController');
     Route::resource('pro_image', 'Pro_imageController');

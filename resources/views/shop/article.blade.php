@@ -7,7 +7,7 @@
 
                 <!-- Breadcrumbs -->
 
-                <div class="breadcrumbs d-flex flex-row align-items-center">
+                <div id="article" class="breadcrumbs d-flex flex-row align-items-center">
                     <ul>
                         <li><a href="index.html">Trang chủ</a></li>
                         <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Tin tức</a></li>

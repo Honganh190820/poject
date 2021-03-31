@@ -8,7 +8,7 @@
                 <img src="{{Auth::user()->image}}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <a href="/admin">{{Auth::user()->name}}</a>
+                <a href="/admin/user_page">{{Auth::user()->name}}</a>
                 <br>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -52,6 +52,11 @@
             <li>
                 <a href="{{ route('admin.user.index') }}">
                     <i class="fa fa-users"></i> <span>QL user</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.coupon.index') }}">
+                    <i class="fa fa-users"></i> <span>QL sale</span>
                 </a>
             </li>
             <li>

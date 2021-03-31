@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderDetail;
 use App\OrderStatus;
+use App\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -64,11 +65,10 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order_status = OrderStatus::all();
-        $orderDetail = OrderDetail::all();
+        //$orderDetail = OrderDetail::all();
         return view('admin.order.edit', [
             'order' => $order,
             'order_status' => $order_status
-//            'orderDetail' => $orderDetail
         ]);
     }
 
@@ -102,8 +102,17 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // gọi tới hàm destroy của laravel để xóa 1 object
+        Order::destroy($id);
+
+        // Trả về dữ liệu json và trạng thái kèm theo thành công là 200
+        $dataResp = [
+            'status' => true
+        ];
+
+        return response()->json($dataResp, 200);
     }
+
     public function removeToCart(Request $request)
     {
         $order_detail_id = $request->input('order_detail_id');
@@ -114,4 +123,5 @@ class OrderController extends Controller
             'data' => 'Xóa sản phẩm thành công'
         ]);
     }
+
 }

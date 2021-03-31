@@ -81,19 +81,18 @@ class UserController extends Controller
         $user->password = bcrypt($request->input('password')); // mật khẩu
         $user->role_id = $request->input('role_id'); // phần quyền
 
-        if ($request->hasFile('avatar')) {
-            // get file
-            $file = $request->file('avatar');
-            // get ten
-            $filename = time().'_'.$file->getClientOriginalName();
-            // duong dan upload
-            $path_upload = 'uploads/user/';
-            // upload file
-            $request->file('avatar')->move($path_upload,$filename);
-
-            $user->avatar = $path_upload.$filename;
-        }
-
+//        if ($request->hasFile('image')) {
+//            // get file
+//            $file = $request->file('image');
+//            // get ten
+//            $filename = time().'_'.$file->getClientOriginalName();
+//            // duong dan upload
+//            $path_upload = 'uploads/user/';
+//            // upload file
+//            $request->file('image')->move($path_upload,$filename);
+//
+//            $user->image = $path_upload.$filename;
+//        }
         $user->is_active = $is_active;
         $user->save();
 
@@ -179,7 +178,7 @@ class UserController extends Controller
 
         if ($request->hasFile('new_avatar')) {
             // xóa file cũ
-            @unlink(public_path($user->avatar)); // hàm unlink của PHP không phải laravel , chúng ta thêm @ đằng trước tránh bị lỗi
+            @unlink(public_path($user->image)); // hàm unlink của PHP không phải laravel , chúng ta thêm @ đằng trước tránh bị lỗi
             // get file
             $file = $request->file('new_avatar');
             // get ten
@@ -189,7 +188,7 @@ class UserController extends Controller
             // upload file
             $request->file('new_avatar')->move($path_upload,$filename);
 
-            $user->avatar = $path_upload.$filename;
+            $user->image = $path_upload.$filename;
         }
 
         $user->is_active = $is_active;

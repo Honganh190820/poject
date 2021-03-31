@@ -54,6 +54,11 @@
                                             <span title="Edit" type="button" class="btn btn-flat btn-primary">Chi tiết</span>
                                         </a>&nbsp;
                                     </td>
+                                    <td>
+                                        <a href="javascript:void(0)"  onclick="destroyModel('order', {{ $item->id }})" >
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
                             @endforeach
                         </table>
                     </div>

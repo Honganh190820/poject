@@ -26,6 +26,8 @@
         background-clip: border-box;
         border: 0 solid rgba(0,0,0,.125);
         border-radius: .25rem;
+        margin-top: 20px;
+
     }
     .card-body {
         -ms-flex: 1 1 auto;
@@ -92,7 +94,7 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <h3 class="profile-username text-center ng-binding">{{ Auth::user()->name }}</h3>
-                                <h4 class="text-muted text-center">abc(ID:1234)</h4>
+                                <h4 class="text-muted text-center"></h4>
                                 <div class="text-center position-relative">
                                     <img class="profile-user-img img-fluid img-circle" src="{{ Auth::user()->image }}" alt="User profile picture">
                                     <!-- box camera -->
@@ -104,7 +106,7 @@
                                             Quyền
                                         </h3>
                                     </div>
-                                    <div class="card-body"></div>
+                                    <div style="text-align: center; font-size: 16px;" class="card-body">{{Auth::user()->role_id == 1 ? 'Manager' : 'Admin'}}</div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -112,7 +114,7 @@
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
-                    <div class="col-md-9">
+                    <div class="col-md-8">
                         <div class="card">
                             <div class="card-body">
                                 <div class="tab-content">

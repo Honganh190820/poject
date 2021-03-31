@@ -52,7 +52,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Thông tin</a>
+                                <a href="admin/user_page" class="btn btn-default btn-flat">Thông tin</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{route('dang_xuat')}}" class="btn btn-default btn-flat">Đăng xuất</a>

@@ -49,6 +49,27 @@
                                 @endif
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputEmail1">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại">
+                                @if ($errors->has('phone'))
+                                    <p style="color: red" class="help is-danger">{{ $errors->first('phone') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Address</label>
+                                <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ">
+                                @if ($errors->has('address'))
+                                    <p style="color: red" class="help is-danger">{{ $errors->first('address') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">CMND</label>
+                                <input type="text" class="form-control" id="CMND" name="CMND" placeholder="Nhập số chứng minh nhân dân">
+                                @if ($errors->has('CMND'))
+                                    <p style="color: red" class="help is-danger">{{ $errors->first('CMND') }}</p>
+                                @endif
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">Mật khẩu</label>
                                 <input type="password" class="form-control" id="password" name="password" placeholder="Nhập password">
                                 @if ($errors->has('password'))
