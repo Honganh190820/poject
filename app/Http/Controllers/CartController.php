@@ -111,8 +111,9 @@ class CartController extends GeneralController
     // Check mã giảm giá
     public function checkCoupon(Request $request)
     {
-        $coupon = Coupon::where('code', $request->coupon_code)->first();
 
+        $coupon = Coupon::where('code', $request->coupon_code)->first();
+//        dd($coupon);
         if (!$coupon) {
             return redirect()->back()->withErrors(['errorCoupon' => 'Mã giảm giá không tồn tại']);
         }

@@ -1,3 +1,74 @@
+<style>
+    table.shop_table {
+        border-bottom: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+    table.shop_table th {
+        background: none repeat scroll 0 0 #f4f4f4;
+        font-size: 15px;
+        text-transform: uppercase;
+    }
+    table.shop_table th, table.shop_table td {
+        border-left: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        padding: 15px;
+        text-align: center;
+    }
+    .product-name {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    td.product-name {
+        font-size: 18px;
+    }
+    table.shop_table th, table.shop_table td {
+        border-left: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        padding: 15px;
+        text-align: center;
+    }
+    td.actions div.coupon {
+        float: left;
+    }
+    label {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-weight: 700;
+    }
+    .cart1 {
+        background: none repeat scroll 0 0 #111111;
+        border: medium none;
+        color: #fff;
+        padding: 11px 20px;
+        text-transform: uppercase;
+    }
+    .cart1{
+        background: none repeat scroll 0 0 #111111;
+        border: medium none;
+        color: #fff;
+        padding: 11px 20px;
+        text-transform: uppercase;
+    }
+    .input-text, input[type="password"], input[type="email"], textarea {
+        border: 1px solid #ddd;
+        padding: 10px;
+    }
+    .quantity input[type="number"] {
+        border: 1px solid #111111;
+        padding: 5px;
+        width: 50px;
+    }
+    .cart1:hover {
+        background-color: #5a88ca;
+    }
+    .cart1:hover{
+        background-color: #5a88ca;
+        color: #fff;
+    }
+</style>
 @if(session('cart'))
     @php
         $cart = session('cart');
@@ -8,101 +79,81 @@
         $coupon = $cart->coupon;
         $payment = $totalPrice - $discount;
     @endphp
-
+    <h4 class="">Mua sắm ngay nào</h4>
     <form action="{{ route('shop.cart.check-coupon') }}" method="get">
-        <div style="width: 300px; float: right; margin-bottom: 10px;" class="input-group">
-            <input id="err" value="{{ $coupon }}" name="coupon_code" style="width: 200px; float: right" type="text" class="form-control" placeholder="Nhập mã khuyến mại">
-            <span class="input-group-btn">
-                            <button style="color: white; background: #e3007b; border-color: #e3007b;" class="btn btn-default" type="submit">Áp dụng</button>
-                        </span>
-
+        <div style="float: right;margin-bottom: 10px;" class="coupon">
+            <label for="coupon_code">Mã giảm giá:</label>
+            <input id="err" type="text" placeholder="Nhập mã giảm giá" value="{{ $coupon }}" id="coupon_code" class="input-text" name="coupon_code">
+            <input type="submit" value="Áp dụng" name="apply_coupon" class="cart1">
         </div>
     </form>
-    <p id="errors"  style="text-align: right;display:none;color: red;transform: translate(-5px,8px);text-transform: uppercase">mã giảm giá không được hỗ trợ</p>
-    @if($errors->any())
-        @foreach($errors as $error)
-            <p  style="text-align: right;color: red;transform: translate(-5px,8px);text-transform: uppercase">{{$error}}</p>
-        @endforeach
-    @endif
+    <from class="cart" action="{{ route('shop.cart.check-coupon') }}" method="get">
 
-
-{{--<from class="cart" action="{{ route('shop.cart.check-coupon') }}" method="get">--}}
-    <h4 class="">Giỏ hàng</h4>
-
-    <table class="table table-striped" id="cart-summary">
-        <thead>
+    <table cellspacing="0" class="shop_table cart">
         <tr>
-            <th class="cart-product">Ảnh sản phẩm</th>
-            <th class="cart-description text-center">Thông tin Sản phẩm</th>
-            <th class="cart-unit text-center">Đơn giá</th>
-            <th class="cart_quantity text-center">Số lượng</th>
-            <th class="cart-total text-right">Tổng giá</th>
-            <th class="cart-delete text-center">&nbsp;</th>
+            @if($errors->any())
+                <p  style="text-align: right;color: red;transform: translate(-5px,8px);text-transform: uppercase">Mã giảm giá không được hỗ trợ</p>
+            @endif
         </tr>
-        </thead>
-        <tbody>
-        @foreach($products as $product)
-        <tr>
-            <td class="cart-product">
-                <a href="">
-                    <img width="100px" src="{{ asset($product['item']->image) }}" alt="{{ $product['item']->name }}">
-                </a>
-            </td>
-            <td class="cart-description">
-                <p class="product-name"><a href="#">{{ $product['item']->name }}</a></p>
-                <small>SKU : {{ $product['item']->sku }}</small>
-            </td>
-            <td class="cart-unit">
-                <ul class="price text-right">
+            <tr>
+                <th class="product-remove">&nbsp;</th>
+                <th class="product-thumbnail">Ảnh sản phẩm</th>
+                <th class="product-name">Sản phẩm</th>
+                <th class="product-price">Giá tiền</th>
+                <th class="product-quantity">Số lượng</th>
+                <th class="product-subtotal">Tổng tiền</th>
+            </tr>
+            <tbody>
+            @foreach($products as $product)
+            <tr class="cart-delete cart_item">
+                <td class="product-remove">
+                    <a class="cart_quantity_delete remove-to-cart" data-id="{{ $product['item']->id }}" ><i class="fa fa-trash-o"></i></a>
+                </td>
+                <td class="product-thumbnail">
+                    <a href=""><img width="145" height="145" alt="{{ $product['item']->name }}" class="shop_thumbnail" src="{{ asset($product['item']->image) }}" pagespeed_url_hash="2028383707" onload="pagespeed.CriticalImages.checkImageForCriticality(this);"></a>
+                </td>
+
+                <td class="product-name">
+                    <a href="single-product.htm">{{ $product['item']->name }}</a>
+                </td>
+
+                <td class="product-price">
                     @if($product['item']->sale==0)
-                        <span class="product_price">{{ number_format( $product['item']->price)}} <sup>đ</sup></span>
+                    <span class="amount">{{ number_format( $product['item']->price)}}</span>
                     @else
-                        <span class="product_price">{{number_format($product['item']->sale)}} <sup>đ</sup></span>
+                        <span class="amount">{{number_format($product['item']->sale)}}</span>
                     @endif
-                </ul>
-            </td>
-            <td class="cart_quantity text-center">
-                <div class="">
-                    <input style="width: 50px" min="1"  class="cart-plus-minus item-qty" data-id="{{ $product['item']->id }}" data-num="{{ $product['qty'] }}" type="number" name="qty" value="{{ $product['qty'] }}">
-                </div>
-            </td>
-            <td class="cart-total">
-                @if($product['item']->sale==0)
-                    <span class="price">{{ number_format($product['qty'] * $product['item']->price ,0,",",".") }} đ</span>
-                @else
+                </td>
 
-                    <span class="price">{{ number_format($product['qty'] * $product['item']->sale ,0,",",".") }}
+                <td class="cart_quantity product-quantity">
+                    <div class="quantity buttons_added">
+                        <input min="1" class="cart-plus-minus item-qty" data-id="{{ $product['item']->id }}" data-num="{{ $product['qty'] }}" type="number" name="qty" value="{{ $product['qty'] }}">
+                    </div>
+                </td>
+                <td class="product-subtotal">
+                    @if($product['item']->sale==0)
+                        <span class="amount">{{ number_format($product['qty'] * $product['item']->price ,0,",",".") }} đ</span>
+                    @else
+
+                        <span class="amount">{{ number_format($product['qty'] * $product['item']->sale ,0,",",".") }}
                         đ</span>
-                @endif
-
-            </td>
-            <td class="cart-delete text-center">
-                <a data-id="{{ $product['item']->id }}"
-                   class="cart_quantity_delete remove-to-cart" title="Xóa sản phẩm">
-                    <i class="fa fa-trash-o"></i></a>
-            </td>
-        </tr>
-        @endforeach
-        </tbody>
-        <tfoot>
-        <tr>
-            <td class="text-right" colspan="4">Tạm tính</td>
-            <td class="price" colspan="2">
-                <span>{{ number_format($totalPrice ,0,",",".") }} đ</span>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-right" colspan="4">Giảm giá</td>
-            <td class="price" colspan="2"><span>- {{ number_format($discount ,0,",",".") }} đ</span></td>
-        </tr>
-        <tr>
-            <td class="text-right" colspan="4">Thanh toán</td>
-            <td class="price" colspan="2"><span style="color: red">{{ number_format($payment ,0,",",".") }} đ</span></td>
-        </tr>
-        </tfoot>
-    </table>
-
-</from>
+                    @endif
+                </td>
+            </tr>
+            @endforeach
+            </tbody>
+        <td class="actions" colspan="6">
+            <div style="float: right" class="shopping">
+                <label for="coupon_code">Thanh toán:</label>
+                <span class="amount">{{ number_format($payment ,0,",",".") }} đ</span>
+            </div>
+            <div class="coupon">
+                <a style="" class="cart1" href="/">Mua thêm</a>
+                <a class="cart1" href="{{ route('shop.cart.destroy') }}">Hủy đơn hàng</a>
+            </div>
+        </td>
+        </table>
+    </from>
 @section('my_javacript')
     <script type="text/javascript">
         var check = {{ $totalPrice }};
@@ -142,7 +193,6 @@
             });
 
             // cập nhật số lượng giỏ hàng
-            //$('.item-qty').change(function () {
             $(document).on("change", '.item-qty', function () {
                 var product_id = $(this).attr('data-id');
                 var before_qty = $(this).attr('data-num');
@@ -200,6 +250,6 @@
             border-radius: 4px;
         }
     </style>
-        <h3 class="text-center"><i class="fa fa-opencart"></i>Bạn chưa có sản phẩm nào trong giỏ hàng</h3>
-        <a href="/" class="buyother"><i class="fa fa-chevron-left"></i> Về trang chủ</a>
+    <h3 class="text-center"><i class="fa fa-opencart"></i>Bạn chưa có sản phẩm nào trong giỏ hàng</h3>
+    <a href="/" class="buyother"><i class="fa fa-chevron-left"></i> Về trang chủ</a>
 @endif

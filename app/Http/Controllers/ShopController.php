@@ -71,9 +71,17 @@ class ShopController extends GeneralController
 
         $category = Category::find($product->category_id);
 
+        $relatedProducts = Product::where([
+            ['is_active' , '=', 1],
+            ['category_id', '=' , $product->category_id ],
+            ['id', '<>' , $product->$id]
+        ])->orderBy('id', 'desc')
+            ->take(10)
+            ->get();
         return view('shop.detailProduct',[
             'category' => $category,
             'product' => $product,
+            'relatedProducts' => $relatedProducts,
             'is_detail' => 1,
             'rating' => $rating
         ]);
@@ -152,10 +160,5 @@ class ShopController extends GeneralController
 
 
     }
-
-
-
-
-
 }
 

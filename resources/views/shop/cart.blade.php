@@ -17,6 +17,25 @@
             display: block;
             margin: 14px 0;
         }
+        .single-sidebar {
+            margin-bottom: 50px;
+        }
+        .sidebar-title {
+            color: #fead53;
+            font-size: 25px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .thubmnail-recent {
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .recent-thumb {
+            float: left;
+            height: auto;
+            margin-right: 15px;
+            width: 63px;
+        }
     </style>
     <div style="margin-top: 20px;" class="container contact_container" id="my_cart">
         <div class="row">
@@ -37,7 +56,6 @@
             @include('shop.components.cart')
         </div>
         @if(session('cart'))
-
             <form style="width: 1000px" action="{{ route('shop.cart.checkout') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <h4>Thông tin cá nhân</h4>
@@ -59,23 +77,22 @@
                         @endif
 
                     </div>
-                    <div class="col-6">
-                        <input id="input_name" class="form_input input_name input_ph" type="text" name="address" placeholder="Địa chỉ nhận hàng" >
-                        @if ($errors->has('address'))
-                            <p style="color: red" class="help is-danger">{{ $errors->first('address') }}</p>
-                        @endif
-                        <textarea id="input_content" class="input_ph input_message" name="note"  placeholder="Ghi chú" rows="3"></textarea>
-                        <div style="margin-top: 20px" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <!-- RETURNE-CONTINUE-SHOP START -->
-                            <div class="returne-continue-shop">
-                                <button type="submit" class="procedtocheckout">Gửi đơn hàng</button>
+                        <div class="col-6">
+                            <input id="input_name" class="form_input input_name input_ph" type="text" name="address" placeholder="Địa chỉ nhận hàng" >
+                            @if ($errors->has('address'))
+                                <p style="color: red" class="help is-danger">{{ $errors->first('address') }}</p>
+                            @endif
+                            <textarea id="input_content" class="input_ph input_message" name="note"  placeholder="Ghi chú" rows="3"></textarea>
+                            <div style="margin-top: 20px" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <!-- RETURNE-CONTINUE-SHOP START -->
+                                <div class="returne-continue-shop">
+                                    <button type="submit" class="procedtocheckout">Gửi đơn hàng</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <a href="{{ route('shop.cart.destroy') }}" class="continueshoping"><i class="fa fa-chevron-left"></i>Hủy đặt hàng</a>
-
-            </form>
-        @endif
+                </form>
+                @endif
+            </div>
     </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Banner;
 use App\Category;
+use App\Product;
 use App\Setting;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class GeneralController extends Controller
         // 2. Lấy dữ liệu - Banner
         $banners = Banner::where('is_active', 1)->orderBy('position', 'desc')->get();
 
-
+        $products = Product::where('is_hot',1);
         //4. cấu hình website
         $settings = Setting::first();
 
@@ -29,7 +30,8 @@ class GeneralController extends Controller
 //            'settings' => $settings,
             'categories' => $categories,
             'banners' => $banners,
-            'setting' => $settings
+            'setting' => $settings,
+            'product'=> $products
         ]);
     }
     public function notfound()
