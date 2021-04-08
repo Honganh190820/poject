@@ -49,13 +49,10 @@
         margin-bottom: 20px;" class="product-name">Sản phẩm đã đặt mua</th>
                     <th style="background: none repeat scroll 0 0 #f4f4f4;
         font-size: 15px;
-        text-transform: uppercase;" class="product-price">Giá tiền</th>
-                    <th style="background: none repeat scroll 0 0 #f4f4f4;
-        font-size: 15px;
         text-transform: uppercase;" class="product-quantity">Số lượng</th>
                     <th style="background: none repeat scroll 0 0 #f4f4f4;
         font-size: 15px;
-        text-transform: uppercase;" class="product-subtotal">Giá tiền</th>
+        text-transform: uppercase;" class="product-subtotal">Tổng tiền</th>
                 </tr>
                 @foreach($order->details as $item)
                 <tbody>
@@ -77,19 +74,12 @@
                     <td style="border-left: 1px solid #ddd;
         border-top: 1px solid #ddd;
         padding: 15px;
-        text-align: center;" class="cart_quantity product-quantity">
-                        {{number_format($item->price)}}
-                    </td>
-                    <td style="border-left: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-        padding: 15px;
         text-align: center;" class="product-subtotal">{{$item->qty}}</td>
                     <td style="border-left: 1px solid #ddd;
         border-top: 1px solid #ddd;
         padding: 15px;
         text-align: center;" class="actions">
                         <div style="float: right" class="shopping">
-                            <label style="display: inline-block;max-width: 100%; margin-bottom: 5px; font-weight: 700;" for="coupon_code">Giá tiền:</label>
                             <span class="amount">{{number_format($item->price)}}</span>
                         </div>
                     </td>
