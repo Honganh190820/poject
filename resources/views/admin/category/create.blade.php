@@ -24,17 +24,6 @@
                     <form role="form" action="{{ route('admin.category.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="box-body">
-
-{{--                            @if($errors->any())--}}
-{{--                                <div class="alert alert-danger alert-dismissible">--}}
-{{--                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>--}}
-{{--                                    <h4><i class="icon fa fa-warning"></i> Lỗi!</h4>--}}
-{{--                                    @foreach($errors->all() as $error)--}}
-{{--                                        <p>{{ $error }}</p>--}}
-{{--                                    @endforeach--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
-
                             <div class="form-group">
                                 <label>Danh mục cha</label>
                                 <select class="form-control" name="parent_id">

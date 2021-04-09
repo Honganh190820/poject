@@ -50,8 +50,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'summary' => 'required',
-            'description' => 'required',
+//            'summary' => 'required',
+//            'description' => 'required',
 //            'stock'=>'requierd',
 //            'price'=>'requier',
 //            'category_id'=>'requierd',
@@ -59,8 +59,8 @@ class ProductController extends Controller
         ], [
             'name.required' => 'Tên không được để trống',
             'image.image' => 'Ảnh không đúng định dạng',
-            'summary.required' => 'Tóm tắt không được để trống',
-            'description.required' => 'Mô tả không được để trống',
+//            'summary.required' => 'Tóm tắt không được để trống',
+//            'description.required' => 'Mô tả không được để trống',
 //            'stock.required' => 'Số lượng không được để trống',
 //            'price.require' => 'Giá tiền không được để trống',
 //            'category_id.required' => 'Bạn chưa chọn danh mục sản phẩm',
@@ -147,6 +147,7 @@ class ProductController extends Controller
         $data = Product::findorFail($id);
         $category_name = Category::where('id', $data->category_id)->first();
 
+
         return view('admin.product.show', [
             'data' => $data,
             'category_name' => $category_name
@@ -182,8 +183,8 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'summary' => 'required',
-            'description' => 'required',
+//            'summary' => 'required',
+//            'description' => 'required',
 //            'stock'=>'requierd',
 //            'price'=>'requierd',
 //            'category_id'=>'requierd',
@@ -191,8 +192,8 @@ class ProductController extends Controller
         ], [
             'name.required' => 'Tên không được để trống',
             'image.image' => 'Ảnh không đúng định dạng',
-            'summary.required' => 'Tóm tắt không được để trống',
-            'description.required' => 'Mô tả không được để trống',
+//            'summary.required' => 'Tóm tắt không được để trống',
+//            'description.required' => 'Mô tả không được để trống',
 //            'stock.required' => 'Số lượng không được để trống',
 //            'price.required' => 'Giá tiền không được để trống',
 //            'category_id.required' => 'Bạn chưa chọn danh mục sản phẩm',

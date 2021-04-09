@@ -84,7 +84,7 @@ class CategoryController extends Controller
         $category->is_active = $is_active;
         $category->position = $request->input('position');
         $category->type = $request->input('type');
-        $category->user_id = Auth::id(); // lưu id ng tạo
+//        $category->user_id = Auth::user()->id; // lưu id ng tạo
 
         $category->save();
 

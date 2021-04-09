@@ -62,7 +62,7 @@
 
                             <tr>
                                 <td><b>Danh mục sản phẩm:</b></td>
-                                <td>{{ $category_name->name }}</td>
+                                <td>{{ ($category_name != null) ? $category_name->name : '' }}</td>
                             </tr>
 
                             </tbody></table>

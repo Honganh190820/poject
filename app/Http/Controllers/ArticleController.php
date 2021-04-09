@@ -44,13 +44,13 @@ class ArticleController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'summary' => 'required',
-            'description' => 'required',
+//            'summary' => 'required',
+//            'description' => 'required',
         ], [
             'title.required' => 'Tiêu đề không được để trống',
             'image.image' => 'Ảnh không đúng định dạng',
-            'summary.required' => 'Tóm tắt không được để trống',
-            'description.required' => 'Mô tả không được để trống'
+//            'summary.required' => 'Tóm tắt không được để trống',
+//            'description.required' => 'Mô tả không được để trống'
         ]);
 
         $article = new Article(); // khởi tạo model
@@ -129,13 +129,13 @@ class ArticleController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10000',
-            'summary' => 'required',
-            'description' => 'required',
+//            'summary' => 'required',
+//            'description' => 'required',
         ], [
             'title.required' => 'Tiêu đề không được để trống',
             'image.image' => 'Ảnh không đúng định dạng',
-            'summary.required' => 'Tóm tắt không được để trống',
-            'description.required' => 'Mô tả không được để trống'
+//            'summary.required' => 'Tóm tắt không được để trống',
+//            'description.required' => 'Mô tả không được để trống'
         ]);
 
         $article = Article::findorFail($id);; // khởi tạo model

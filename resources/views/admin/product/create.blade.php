@@ -99,7 +99,7 @@
                             <div class="form-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" value="1" name="is_active"> <b>Trạng thái</b>
+                                        <input type="checkbox" value="1" name="is_active"> <b>Hiển thị</b>
                                     </label>
                                 </div>
                             </div>

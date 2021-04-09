@@ -71,7 +71,7 @@
                                     <td>{{ ($item->is_active == 1) ? 'Hiển thị' : 'Ẩn' }}</td>
                                     <td class="text-center">
                                         <a href="{{route('admin.product.show', ['id'=> $item->id ])}}">
-                                            <i class='far fa-eye'></i>
+                                            <span class="glyphicon glyphicon-eye-open"></span>
                                         </a> |
                                         <a href="{{route('admin.product.edit', ['id'=> $item->id])}}" >
                                             <i class="fa fa-edit"></i>
