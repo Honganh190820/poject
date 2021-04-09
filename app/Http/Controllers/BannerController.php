@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -173,6 +174,14 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // gọi tới hàm destroy của laravel để xóa 1 object
+        Banner::destroy($id);
+
+        // Trả về dữ liệu json và trạng thái kèm theo thành công là 200
+        $dataResp = [
+            'status' => true
+        ];
+
+        return response()->json($dataResp, 200);
     }
 }
